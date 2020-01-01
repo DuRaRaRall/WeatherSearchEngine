@@ -1,0 +1,139 @@
+<div class="result-container">
+    <div class="buttons_container">
+        <button type="button" class="btn mr-3" [class.active]="this.is_result" [class.btn_primary]="!this.is_result" [class.btn_secondary]="this.is_result" (click)="pressResults()">Results</button>
+        <button type="button" class="btn" [class.active]="!this.is_result" [class.btn_primary]="this.is_result" [class.btn_secondary]="!this.is_result" (click)="pressFavorites()">Favorites</button>
+    </div>
+    <div *ngIf="this.sService.is_searching" class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="this.sService.progress_percent_number" aria-valuemin="0" aria-valuemax="100" [style.width]="this.sService.progress_percent_number+'%'"></div>
+    </div>
+    <div *ngIf="!this.sService.is_searching && this.is_error && this.is_result" class="card error_div col-12 col-sm-12">
+        Invalid Address.
+    </div>
+
+    <div *ngIf="!this.sService.is_searching && this.is_shown && this.is_result">
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link tab_design" id="nav-current-tab" data-toggle="tab" href="#" role="tab" aria-controls="nav-current" aria-selected="true" [class.active]="'nav-current-tab' === this.activated_tab" (click)="this.switch_tabs('nav-current-tab')">Current</a>
+                <a class="nav-item nav-link tab_design" id="nav-weekly-tab" data-toggle="tab" href="#" role="tab" aria-controls="nav-weekly" aria-selected="false" [class.active]="'nav-weekly-tab' === this.activated_tab" (click)="this.switch_tabs('nav-weekly-tab')">Hourly</a>
+                <a class="nav-item nav-link tab_design" id="nav-hourly-tab" data-toggle="tab" href="#" role="tab" aria-controls="nav-hourly" aria-selected="false" [class.active]="'nav-hourly-tab' === this.activated_tab" (click)="this.switch_tabs('nav-hourly-tab')">Weekly</a>
+                <a class="ml-auto twi_n_fav_button inline_text twitter-share-button" target="_blank" href="https://twitter.com/intent/tweet?text=The current temperature at {{this.form_data['city']}} is {{this.weekly_data['currently']['temperature']}}. The weather conditions are {{this.weekly_data['currently']['summary']}}. &button_hashtag=CSCI571WeatherSearch" id="twitter_link">
+                    <img id="tweet_img" src="https://img.icons8.com/color/48/000000/twitter.png" alt="tweet">
+                </a>
+                <button class="btn twi_n_fav_button inline_text" (click)="this.click_favorites()" id="fav_link">
+                    <i *ngIf="this.is_favorite" class="material-icons fav_icon" style="color: orange;">star</i>
+                    <i *ngIf="!this.is_favorite" class="material-icons fav_icon" style="color: black;">star_border</i>                        
+                </button>
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div *ngIf="'nav-current-tab' === this.activated_tab" class="tab-pane fade show active" id="nav-current" role="tabpanel" aria-labelledby="nav-current-tab">
+                <div class="card col-sm-8 offset-sm-2 col-12 card_style">
+                    <div class="card-body card_body">
+                        <div class="row">
+                            <div class="col-sm-8 col-7 card_text_align">
+                                <div class="card_city"> {{this.form_data['city']}} </div>
+                                <div class="card_timezone"> {{this.weekly_data['timezone']}} </div>
+                                <div class="card_temp_container">
+                                    <div class="inline_text card_temp"> {{this.result_rounded_temp}} </div>
+                                    <img id="degree_circle" src="https://cdn3.iconfinder.com/data/icons/virtual-notebook/16/button_shape_oval-512.png"/>
+                                    <div class="inline_text card_temp">F</div>
+                                </div>
+                                <div class="card_summary"> {{this.weekly_data['currently']['summary']}} </div>
+                            </div>
+                            <div class="col-sm-4 col-5 state_seal_container">
+                                <img id="state_seal" class="col-sm-12 col-12" [src]="this.state_seal_url"/>
+                            </div>
+                        </div>
+                        <div class="row col-sm-12 col-12 property_row justify-content-between">
+                            <span class="property_container">
+                                <img class="property_img" src="https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-16-512.png" placement="top" ngbTooltip="Humidity"/>
+                                <div class="property_text">{{this.weekly_data['currently']['humidity']}}</div>
+                            </span>
+                            <span class="property_container">
+                                <img class="property_img" src="https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-25-512.png" placement="top" ngbTooltip="Pressure"/>
+                                <div class="property_text">{{this.weekly_data['currently']['pressure']}}</div>
+                            </span>
+                            <span class="property_container">
+                                <img class="property_img" src="https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-27-512.png" placement="top" ngbTooltip="WindSpeed"/>
+                                <div class="property_text">{{this.weekly_data['currently']['windSpeed']}}</div>
+                            </span>
+                            <span class="property_container">
+                                <img class="property_img" src="https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-30-512.png" placement="top" ngbTooltip="Visibility"/>
+                                <div class="property_text">{{this.weekly_data['currently']['visibility']}}</div>
+                            </span>
+                            <span *ngIf="this.weekly_data['currently']['cloudCover']!=0" class="property_container">
+                                <img class="property_img" src="https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-28-512.png" placement="top" ngbTooltip="CloudCover"/>
+                                <div class="property_text">{{this.weekly_data['currently']['cloudCover']}}</div>
+                            </span>
+                            <span class="property_container">
+                                <img class="property_img" src="https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-24-512.png" placement="top" ngbTooltip="Ozone"/>
+                                <div class="property_text">{{this.weekly_data['currently']['ozone']}}</div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="'nav-weekly-tab' === this.activated_tab" class="tab-pane active" id="nav-weekly" role="tabpanel" aria-labelledby="nav-weekly-tab">
+                <div class="col-sm-4 col-12 offset-sm-0">
+                    <select id="property_select" name="property_select" class="custom-select" (change)="this.switch_property(property_select.value)" #property_select>
+                        <option value="temperature">Temperature</option>
+                        <option value="pressure">Pressure</option>
+                        <option value="humidity">Humidity</option>
+                        <option value="ozone">Ozone</option>
+                        <option value="visibility">Visibility</option>
+                        <option value="windSpeed">Wind Speed</option>
+                    </select>
+                </div>
+                <div class="col-sm-12 col-12">
+                    <div style="display: block">
+                        <canvas baseChart
+                            [datasets]="barChartData"
+                            [labels]="barChartLabels"
+                            [options]="barChartOptions"
+                            [legend]="barChartLegend"
+                            [chartType]="barChartType">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="'nav-hourly-tab' === this.activated_tab" class="tab-pane active" id="nav-hourly" role="tabpanel" aria-labelledby="nav-hourly-tab">
+                <app-canvas-js-chart></app-canvas-js-chart>
+            </div>
+        </div>       
+    </div>
+
+
+    <div class="fav_container" *ngIf="!this.sService.is_searching && !this.is_result && this.has_touched">
+        <div class='fav_table'>
+            <div *ngIf="this.table_storage.length==0" class="card error_div col-sm-12 col-12">No Records!</div>
+            <table *ngIf="this.table_storage.length!=0" class="table-striped" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th scope="col" style="min-width: 5%">#</th>
+                        <th scope="col" class="table_col">Image</th>
+                        <th scope="col" class="table_col">City</th>
+                        <th scope="col" class="table_col">State</th>
+                        <th scope="col" class="table_col">Favorites</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let item_object of this.table_storage'>
+                        <th scope="row">{{item_object['id']}}</th>
+                        <td><img class="col-sm-5 tbl_state_seal" [src]="item_object['state_seal_url']"/></td>
+                        <td>
+                            <a href="#" (click)="this.search_pos(item_object)" tooltipb="" data-toggle="tooltip" [title]="item_object['city']">{{item_object['city']}}</a>
+                        </td>
+                        <td>{{item_object['state']}}</td>
+                        <td>
+                            <button class="btn delete_button" style="background-color: white; border: 0; vertical-align: center;" (click)="this.deleteItemfromLocal(item_object['city'])">
+                                <i class="material-icons delete_icon" style="color: orange;">delete</i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

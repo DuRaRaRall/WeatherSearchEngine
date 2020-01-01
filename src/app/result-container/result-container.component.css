@@ -1,0 +1,274 @@
+@media (min-width: 992px) { 
+    .result-container{
+        width: 75%;
+        text-align: center;
+        margin: auto;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .buttons_container {
+        margin-bottom: 10px;
+    }
+
+    .error_div {
+        background-color: rgb(240, 229, 186);
+        color: rgb(144, 120, 55);
+        text-align: left;
+        padding: 10px;
+        margin: 20px;
+        font-size: 16px;
+        border: 0;
+    }
+
+    #tweet_img {
+        width: 35px;
+    }
+    .twi_n_fav_button{
+        width: 48px;
+        vertical-align: center;
+        background-color: white;
+        padding: 0;
+    }
+    .fav_icon{
+        font-size: 32px;
+    }
+
+    .card_city {
+        font-size: 30px;
+    }
+    .card_timezone {
+        font-size: 30px;
+        color: rgb(41, 76, 91);
+    }
+    .card_temp_container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .card_temp {
+        font-size: 42px;
+        margin-right: 10px;
+    }
+    .card_summary {
+        font-size: 26px;
+    }
+
+    #degree_circle {
+        width: 10px;
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 10px;
+        margin-top: 12px;
+    }
+    
+    #state_seal {
+        margin-top: 50px;
+        border-radius: 50%;
+    }
+
+    .property_row{
+        margin-top: 30px;
+    }
+    
+    .property_row div{
+        padding: 0;
+    }
+    .property_container {
+        text-align: center;
+    }
+    .property_img {
+        width: 35px;
+    }
+    .property_text{
+        font-size: 16px;
+    }
+
+    thead {
+        line-height: 35px;
+        min-height: 35px;
+    }
+    .tbl_state_seal{
+        margin-top: 5px;
+        margin-bottom: 5px;
+        width: 100px;
+    }
+    .delete_button {
+        width: 35px;
+        height: 32px;
+        padding: 0;
+        border-radius: 3px;
+    }
+    .delete_icon {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 576px) { 
+    .result-container{
+        width: 95%;
+        text-align: center;
+        margin: auto;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .buttons_container {
+        margin-bottom: 10px;
+    }
+
+    .error_div {
+        background-color: rgb(240, 229, 186);
+        color: rgb(144, 120, 55);
+        text-align: left;
+        padding: 10px;
+        margin: 20px 0;
+        font-size: 16px;
+        border: 0;
+    }
+
+    .tab_design {
+        color: black;
+        padding: 10px;
+    }
+
+    #tweet_img {
+        width: 35px;
+    }
+    .twi_n_fav_button{
+        width: 48px;
+        vertical-align: center;
+        background-color: white;
+        padding: 0;
+    }
+    .fav_icon{
+        font-size: 32px;
+    }
+
+    .card_body {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .card_text_align{
+        text-align: left;
+        padding-right: 0;
+    }
+    .card_city {
+        font-size: 20px;
+    }
+    .card_timezone {
+        font-size: 20px;
+        color: rgb(41, 76, 91);
+    }
+    .card_temp_container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .card_temp {
+        font-size: 25px;
+        margin-right: 5px;
+    }
+    .card_summary {
+        font-size: 18px;
+    }
+
+    #degree_circle {
+        width: 10px;
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 5px;
+        margin-top: 6px;
+    }
+    .state_seal_container {
+        padding-left: 0;
+    }
+    #state_seal {
+        padding: 0;
+        border-radius: 50%;
+    }
+
+    .property_row{
+        margin-top: 30px;
+    }
+    
+    .property_row div{
+        padding: 0;
+    }
+    .property_container {
+        text-align: center;
+    }
+    .property_img {
+        width: 20px;
+    }
+    .property_text{
+        font-size: 12px;
+    }
+
+
+    #property_select {
+        font-size: 14px;
+    }
+
+    thead {
+        line-height: 35px;
+        min-height: 35px;
+    }
+    .tbl_state_seal{
+        margin-top: 5px;
+        margin-bottom: 5px;
+        width: 80px;
+    }
+    .delete_button {
+        width: 35px;
+        height: 32px;
+        padding: 0;
+        border-radius: 3px;
+    }
+    .delete_icon {
+        font-size: 16px;
+    }
+}
+
+.table_col {
+    min-width: 10%;
+}
+
+.fav_container {
+    margin-top: 50px;
+}
+
+.btn_primary {
+    background-color: white;
+    color: grey;
+    border-color: black;
+}
+
+.btn_secondary {
+    background-color: rgb(90, 136, 164);
+    color: white;
+    border-color: black;
+}
+
+.card_style {
+    background-color: rgb(145, 203, 240);
+    border: 1px solid black; 
+    margin-top: 20px;
+}
+.card_text_align{
+    text-align: left;
+}
+
+.inline_text {
+    display: inline-block;
+}
+
+.tab_design {
+    color: black;
+}
+
+.table-striped thead th{
+    background-color: rgb(87, 131, 158);
+}
+.table-striped tbody tr:nth-of-type(2n+1){
+    background-color: rgb(143, 200, 237);
+}
+
+.table-striped tbody tr:nth-of-type(2n){
+    background-color: rgb(87, 131, 158);
+}
