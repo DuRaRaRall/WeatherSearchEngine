@@ -1,6 +1,7 @@
-# HW8Frontend
+# WeatherSearchEngine
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.15.
+This project was meant for users to search for different places or current location with in US to get weather details, to watch weather and place detailed attributes and weather forecast in a week, and to add weather of a place into favorites or delete it from favorite.
 
 ## Development server
 
@@ -25,3 +26,11 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Implementation
+http://my-angular-weather-project.appspot.com/#
+If the url above doesn't work, see the GIFs below to find about the implementation details.
+![image]( https://github.com/DuRaRaRall/WeatherSearchEngine/blob/master/Cut5.gif)
+
+
+![image]( https://github.com/DuRaRaRall/WeatherSearchEngine/blob/master/Cut6.gif)
